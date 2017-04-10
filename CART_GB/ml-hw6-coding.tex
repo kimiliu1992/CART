@@ -1,0 +1,76 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+%\renewcommand{\qedsymbol}{\filledbox}
+ 
+\title{Machine Learning Homework 6 }%replace X with the appropriate number
+\author{Hao Liu} %if necessary, replace with your course title
+ 
+\maketitle
+
+\section{CART Implemenation}
+
+ In this section, we will work on implementation of decision tree model as classifier and regressor (CART). We will use the SVM data from homework 4 for training and visualization.
+ 
+\subsection{Decision Tree Class}
+Complete the class \textbf{DTree}. Indeed you need to implment two functions in this class. \textbf{split\_tree} function will be used for finding the best feature and its corresponding value for split. \textbf{split\_node} function will apply \textbf{split\_tree} to find its children.
+
+\subsection{Decision Tree Classifier}
+Complete the class \textbf{DTree\_classifier}, which inherits from \textbf{DTree}. You need to: 
+\begin{enumerate}
+	\item choose either one of \textbf{compute\_entropy} and \textbf{compute\_gini} to complete
+	\item define the left and right subtree at initialization part
+	\item complete \textbf{compute\_probability} function
+\end{enumerate}
+Try either entropy or gini as split criterion. Evaluate the results and plot decision boundary for training set. You can also compare your model with decision tree from sklearn package for debugging. (Note that visualization for tree model requires \textbf{graphviz} installed.)
+
+\subsection{Decision Tree Regressor}
+Complete the class \textbf{DTree\_regressor}, which inherits from \textbf{DTree}. You need to: 
+\begin{enumerate}
+	\item choose either one of \textbf{mean\_square\_error} and \textbf{mean\_absolute\_error} to complete
+	\item define the left and right subtree at initialization part
+\end{enumerate}
+Evaluate the results and compare with decision tree regressor from sklearn package for debugging.
+
+\section{Gradient Boosting Implementation}
+In this section, we will implement gradient boosting method based on tree model. The data we are going to work with are svm data and kernelized regression data from homework 4.
+
+\subsection{Gradient Boosting Regressor}
+Complete the class \textbf{gradient\_boosting}. Please use \textbf{Dtree\_regressor} you defined in last question to train each decision stump in gradient  boosting. We are going to use L2 loss. You can use \textbf{pseudo\_residual\_L2} function to compute residual. However, in general, this class should take a function for computing pseudo-residual. 
+\begin{enumerate}
+	\item Define function \textbf{fit} and \textbf{predict}. 
+	\item Train your GBM model on svm training data, plot the decision boundary with different number of estimators. You don't need to plot the contour map though it is a regression model. Simply visualize the positive and negative region is fine. 
+	\item Train your GBM model on kernelized regression training data, plot the function curve with different number of estimators to see how GBM is fitted to training data.
+\end{enumerate}
+
+
+\end{document}
